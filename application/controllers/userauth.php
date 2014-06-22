@@ -15,12 +15,14 @@ class UserAuth extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="help-block">', '</div>');
 		if ($this->form_validation->run() == FALSE){
-			$this->load->view("userAuth/index");
+			$this->load->view("userauth/index");
 			$this->load->view("footer");
 		}
 		else{
+			$this->load->model('userauth_model');
 			$sess_array = array( 
-				'username' => $this->input->post('username')
+				'username' => $this->input->post('username'),
+				'name'     => $this->userauth_model->getName($this->input->post('username')),
 			); 
 			$this->session->set_userdata(array('username'=>$this->input->post('username')));
 			$this->session->set_userdata('mpa_logged_in', $sess_array);

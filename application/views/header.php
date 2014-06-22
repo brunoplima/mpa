@@ -10,21 +10,23 @@
 			array('name' => 'author', 'content' => 'Bruno Lima'),
 		);
 		echo meta($meta);
+		$pageTitle = isset($title) ? $title : 'Minha Prova - Aluno';
 		?>
-		<title>Minha Prova - Aluno</title>
+		<title><?php echo $pageTitle ?></title>
 		<?php echo link_tag('css/bootstrap.min.css');?>
 		<?php echo link_tag('css/header.css');?>
-		<?php if(isset($css)) foreach ($css as $file) echo link_tag("css/$file");?>
+		<?php if(isset($css)) foreach ($css as $file) echo link_tag("css/$file.css");?>
 		<?php echo script_tag('js/jquery-2.1.1.min.js');?>
 		<?php echo script_tag('js/bootstrap.min.js');?>
-		<?php if(isset($js))  foreach ($js as $file)  echo link_tag("js/$file"); ?>
+		<?php echo script_tag('js/commom.js');?>
+		<?php if(isset($js))  foreach ($js as $file)  echo link_tag("js/$file.js"); ?>
 		<script>$(document).ready(function(){$( "#username" ).focus();});</script>
 	</head>
 	<body>
 		<div id="header">
 			<div id="appTitle">Minha Prova - Aluno</div>
 				<div id="user" class="dropdown pull-right">
-					<a data-target="#" data-toggle="dropdown" class="dropdown-toggle"><?php echo $this->session->userdata('mpa_logged_in')['username']; ?> <b class="caret"></b></a>
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php echo $this->session->userdata('mpa_logged_in')['name']; ?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a data-target="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 						<li class="divider"></li>
@@ -36,6 +38,11 @@
 			<div id='topmenu_content'>
 				<ul>
 					<li><?php  echo anchor('aluno', 'Página Inicial');?></li>
+					<li><?php  echo anchor('user', 'Usuários');?></li>
 				</ul>
 			</div>
 		</div>
+		<div id="layoutContent">
+			<div id="tableWrapper">
+				<div id="tableRow">
+					<div id="tableContent">

@@ -1,5 +1,5 @@
 body{
-    background: #EEF;
+    background: #E5E5FF;
 }
 
 a:hover{
@@ -16,6 +16,7 @@ a:hover{
 #appTitle, #loginTitle{
     color: #4293de;
     font-size: x-large;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 #appTitle{
@@ -125,12 +126,80 @@ a:hover{
     border-right:1px solid white;
 }
 
+#layoutContent{
+    width:90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#tableWrapper {
+    display:table;
+    border-collapse:collapse;
+    width:100%;
+    height: 10px;
+}
+
+#tableRow {
+    display:table-row;
+}
+
+#tableRight, #tableContent {
+    display:table-cell;
+    padding: 10px;
+}
+
+#tableRight {
+    width:15%;
+    font-size: smaller;
+    line-height: 1.6;
+    /*border: solid 1px blue;*/
+}
+
+#tableContent {
+    width:85%;
+    /*height: 1000px;*/
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 20px 3px #d3d3d3;
+}
+
+#tableRight ul{
+    padding-left: 0;
+}
+
+#tableRight .affix {
+    position: fixed;
+    top: 10px;
+}
+
+
+#tableRight li{
+    list-style: none;
+    border-left: solid 1px transparent;
+    padding-left: 5px;
+}
+#tableRight li:hover{border-left: solid 1px #428bca;}
+#tableRight a{
+    color: gray;
+}
+#tableRight a:hover{text-decoration: none;color: #428bca;}
+
+#tableRight .active{
+    border-left: solid 2px #428bca;
+    font-weight: bold;
+}
+#tableRight .active:hover{border-left: solid 2px #428bca;}
+#tableRight .active a{
+    color: #428bca;
+}
+
 #footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: url(../images/footerBg1.png) #eef center top no-repeat;
+    background: url(../images/footerBg1.png) #E5E5FF center top no-repeat;
     padding-top: 3px;
-    color: grey;
+    color: gray;
     text-align: center;
 }
