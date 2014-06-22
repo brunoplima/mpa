@@ -1,0 +1,22 @@
+#loginBox{
+	width: 350px;
+	padding-bottom: 30px;
+	margin: auto;
+	margin-top: 40px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 0 0 0 #D2D2D2, -1px 0 0 0 #D2D2D2, 0 1px 0 0 #B6B6B6, 0 2px 0 0 #D2D2D2, 2px 0 0 0 #E6E6E6, -2px 0 0 0 #E6E6E6, 0 3px 0 0 #E6E6E6, 0 -1px 0 0 #E6E6E6
+}
+
+#loginLogo{
+	width: 209px;
+	height: 150px;
+	margin: 0px auto 0px ;
+	background:url(../../images/logo_209x150.png) center no-repeat;
+}
+
+#loginForm{
+	width: 80%;
+	margin: auto;
+	margin-top: 40px;
+}
