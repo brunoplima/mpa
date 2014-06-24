@@ -37,8 +37,27 @@
 		<div id="topmenu">
 			<div id='topmenu_content'>
 				<ul>
-					<li><?php  echo anchor('aluno', 'Página Inicial');?></li>
-					<li><?php  echo anchor('user', 'Usuários');?></li>
+					<li><?php echo anchor('aluno', '<span class="glyphicon glyphicon-home"></span>');?></li>
+					<li><?php echo anchor('user', 'Usuários');?></li>
+					<li class='has-sub'><?php echo anchor('user', 'Prova');?>
+						<ul>
+							<li><a><?php echo anchor('prova', 'Gerar');?></a></li>
+							<li><a>Corrigir</a></li>
+						</ul>
+					</li>
+					<li class='has-sub'><a>Ranking de questões</a>
+						<ul>
+							<li><a>Direto</a></li>
+							<li><a>Baseado Respostas</a></li>
+						</ul>
+					</li>
+					<li class='has-sub'><a>Minhas respostas</a>
+						<ul>
+							<li><a>Ver</a></li>
+							<li><a>Compartilhar</a></li>
+						</ul>
+					</li>
+					<li><a>Ranking de alunos</a></li>
 				</ul>
 			</div>
 		</div>
