@@ -7,6 +7,7 @@ if ( ! function_exists('loadLayout')){
 		$view = strtolower($callers[1]['function']);
 		$CI =& get_instance();
 		$CI->load->view("header", $vars);
+		$CI->load->view("flash");
 		$CI->load->view("$dir/$view");
 		$CI->load->view("affix");
 		$CI->load->view("footer");

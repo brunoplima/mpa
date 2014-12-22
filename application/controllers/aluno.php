@@ -15,6 +15,7 @@ class Aluno extends CI_Controller {
 	public function index(){
 		loadLayout(array('css'=>array('aluno/aluno.css')));
 	}
+
 }
 
 /* End of file aluno.php */

@@ -12,6 +12,7 @@
 		echo meta($meta);
 		?>
 		<title>Minha Prova - Aluno</title>
+		<link rel="shortcut icon" href="http://localhost/mpa/favicon.ico?v=2" />
 		<?php echo link_tag('css/bootstrap.min.css');?>
 		<?php echo link_tag('css/header.css');?>
 		<?php echo link_tag('css/userAuth/index.css');?>
@@ -36,7 +37,7 @@
 					<?php echo form_error($field) ?>
 				</div>
 				<?php endforeach; ?>
-				<a>Cadastrar-se</a><button type="submit" class="btn btn-primary btn-stretch-sides pull-right">Entrar</button>
+				<a href="<?php echo site_url('userauth/signup')?>">Cadastrar-se</a><button type="submit" class="btn btn-primary btn-stretch-sides pull-right">Entrar</button>
 			</form>
 		</div>
 		<div id="footer">Desenvolvido por <?php echo mailto('brunolima.uece@gmail.com', 'Bruno Lima')?> &middot; UECE &middot; 2014</div>

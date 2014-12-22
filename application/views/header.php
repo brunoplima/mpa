@@ -13,6 +13,7 @@
 		$pageTitle = isset($title) ? $title : 'Minha Prova - Aluno';
 		?>
 		<title><?php echo $pageTitle ?></title>
+		<link rel="shortcut icon" href="http://localhost/mpa/favicon.ico?v=2" />
 		<?php echo link_tag('css/bootstrap.min.css');?>
 		<?php echo link_tag('css/header.css');?>
 		<?php if(isset($css)) foreach ($css as $file) echo link_tag("css/$file.css");?>
@@ -28,7 +29,7 @@
 				<div id="user" class="dropdown pull-right">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php echo $this->session->userdata('mpa_logged_in')['name']; ?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a data-target="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+						<li><a href="<?php echo site_url('user/settings')?>"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 						<li class="divider"></li>
 						<li><a href="<?php echo site_url('userauth/logout')?>" style="color: red"><span class="glyphicon glyphicon-remove"></span> Sair</a></li>
 					</ul>
@@ -38,7 +39,6 @@
 			<div id='topmenu_content'>
 				<ul>
 					<li><?php echo anchor('aluno', '<span class="glyphicon glyphicon-home"></span>');?></li>
-					<li><?php echo anchor('user', 'Usuários');?></li>
 					<li class='has-sub'><?php echo anchor('user', 'Prova');?>
 						<ul>
 							<li><a><?php echo anchor('prova', 'Gerar');?></a></li>
