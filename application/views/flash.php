@@ -6,6 +6,10 @@
 <div class="alert alert-danger"><div onclick="$(this).parent().hide();" class="alert-close-x alert-close-danger">&times;</div><?php echo $this->session->flashdata('error') ?></div>
 <?php endif; ?>
 
+<?php if($this->session->flashdata('warning') !== FALSE): ?>
+<div class="alert alert-warning"><div onclick="$(this).parent().hide();" class="alert-close-x alert-close-warning">&times;</div><?php echo $this->session->flashdata('warning') ?></div>
+<?php endif; ?>
+
 <style type="text/css">
 .alert{
 	position: relative;

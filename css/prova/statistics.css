@@ -1,0 +1,28 @@
+h1{
+	text-align: center;
+}
+.container {
+	display: table;
+	text-align: center;
+	width: 100%;
+}
+.column {
+	display: table-cell;
+	width: 32%;
+}
+.columnTitle{
+	width: 90%;
+	margin: auto;
+	border-bottom: solid 1px #ccc;
+	font-size: larger;
+	margin-bottom: 15px;
+}
+#answeredLegend, #typeLegend, #accuraceLegend{
+	float: right;
+}
+
+#answeredRow{border-right: solid 8px #269abc;}
+#notAnsweredRow{border-right: solid 8px #ccc;}
+#correctsRow{border-right: solid 8px #4cae4c;}
+#wrongRow{border-right: solid 8px #f00;}
+#subjetivasRow{border-right: solid 8px #eea236;}

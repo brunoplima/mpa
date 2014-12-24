@@ -1,6 +1,6 @@
 <?php
 	echo form_fieldset("Gerar Prova"); 
-	echo form_open('prova/index', array('class'=>"form-horizontal", 'role'=>"form")); 
+	echo form_open('prova/gerar', array('class'=>"form-horizontal", 'role'=>"form", 'autocomplete'=>'off')); 
 	$cnt = 0;
 	$labelWidth = 2;
 	$inputWidth = 4;
@@ -35,5 +35,5 @@
 		</div>
 	</div>
 <?php
-	echo form_fieldset_close(); 
-	echo form_close(); 
+	echo form_fieldset_close();
+	echo form_close();

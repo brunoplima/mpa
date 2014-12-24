@@ -13,3 +13,14 @@ if ( ! function_exists('loadLayout')){
 		$CI->load->view("footer");
 	}
 }
+
+if ( ! function_exists('loadLayoutView')){
+	function loadLayoutView($vars = array(), $view) {
+		$CI =& get_instance();
+		$CI->load->view("header", $vars);
+		$CI->load->view("flash");
+		$CI->load->view($view);
+		$CI->load->view("affix");
+		$CI->load->view("footer");
+	}
+}

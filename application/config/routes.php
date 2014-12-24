@@ -42,5 +42,11 @@ $route['default_controller'] = "userauth";
 $route['404_override'] = '';
 
 
+# Prova
+$route['prova/gerar']                                     = 'prova/generate';
+$route['prova/corrigir']                                  = 'prova/evaluateAndStore';
+$route['prova/estatisticas/(:num)']                       = "prova/statistics/$1";
+
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -16,11 +16,16 @@
 		<link rel="shortcut icon" href="http://localhost/mpa/favicon.ico?v=2" />
 		<?php echo link_tag('css/bootstrap.min.css');?>
 		<?php echo link_tag('css/header.css');?>
+		<?php echo link_tag('css/commom.css');?>
+		<?php echo link_tag('css/pace-flash-blue.css');?>
+		<?php echo link_tag('css/sweet-alert.css');?>
 		<?php if(isset($css)) foreach ($css as $file) echo link_tag("css/$file.css");?>
 		<?php echo script_tag('js/jquery-2.1.1.min.js');?>
 		<?php echo script_tag('js/bootstrap.min.js');?>
 		<?php echo script_tag('js/commom.js');?>
-		<?php if(isset($js))  foreach ($js as $file)  echo link_tag("js/$file.js"); ?>
+		<?php echo script_tag('js/pace.min.js');?>
+		<?php echo script_tag('js/sweet-alert.min.js');?>
+		<?php if(isset($js))  foreach ($js as $file)  echo script_tag("js/$file.js"); ?>
 		<script>$(document).ready(function(){$( "#username" ).focus();});</script>
 	</head>
 	<body>
@@ -41,7 +46,7 @@
 					<li><?php echo anchor('aluno', '<span class="glyphicon glyphicon-home"></span>');?></li>
 					<li class='has-sub'><?php echo anchor('user', 'Prova');?>
 						<ul>
-							<li><a><?php echo anchor('prova', 'Gerar');?></a></li>
+							<li><a><?php echo anchor('prova/gerar', 'Gerar');?></a></li>
 							<li><a>Corrigir</a></li>
 						</ul>
 					</li>
