@@ -1,14 +1,15 @@
-<?php if(isset($prova)): //echo '<pre>'.print_r($prova,true).'</pre>'?>
+<?php if(isset($test)): ?>
+<?php if(isset($warnMessage)) echo "<div class='alert alert-warning'>$warnMessage</div>" ?>
 <?php echo form_open('prova/corrigir', array('id'=>'prova_form','role'=>"form", 'autocomplete'=>'off')); ?>
-	<div id="prova_title"><b>Disciplina:</b> <i><?php echo $discipline ?></i> </div>
+	<div id="prova_title"><b>Disciplina:</b> <i><?php echo $discipline ?></i></div>
 	<hr>
-	<?php $cnt=0; foreach ($prova['questions'] as $id => $description): $cnt++ ?>
+	<?php $cnt=0; foreach ($test['questions'] as $id => $description): $cnt++ ?>
 		<div class="question"><?php echo "$cnt) $description" ?></div>
 		<div class="answer">
-			<?php if(count($prova['options'][$id]) > 0): ?>
+			<?php if(count($test['options'][$id]) > 0): ?>
 				<?php
 				$letter = 'a';
-				foreach ($prova['options'][$id] as $answerId => $opt){
+				foreach ($test['options'][$id] as $answerId => $opt){
 					$radio = array(
 						'name'  => "question_$id",
 						'id'    => "answer_$answerId",
@@ -23,6 +24,7 @@
 			<?php endif ?>
 		</div>
 	<?php endforeach ?>
+<?php if(isset($warnMessage)) echo "<br><div class='alert alert-warning'>$warnMessage</div>" ?>
 	<div id="submit_area">
 		<button type="button" class="btn btn-warning pull-left" id="redo">Gerar novamente <span class="glyphicon glyphicon-repeat"></span></button>
 		<button type="submit" class="btn btn-primary pull-right">Armazenar <span class="glyphicon glyphicon-cloud"></span></button>

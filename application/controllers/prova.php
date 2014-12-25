@@ -19,6 +19,8 @@ class Prova extends CI_Controller {
 		if($this->form_validation->run() !== FALSE){
 			$data = $this->input->post(NULL, TRUE);
 			$prova['questions'] = $this->prova_model->getQuestions($data);
+			if(count($prova['questions'] < $data['ammount']))
+				$vars['warnMessage'] = "A quantidade de questões solicitadas é superior à existente no sistema";
 			$this->session->set_userdata('questions',array_keys($prova['questions']));
 			$this->session->set_userdata('discipline', $data['discipline']);
 			foreach (array_keys($prova['questions']) as $id)
@@ -61,6 +63,19 @@ class Prova extends CI_Controller {
 		$js  = array('Chart.min', 'Chart.legend', 'prova/statistics');
 		$css = array('Chart.legend', 'prova/statistics');
 		loadLayout(array('stats'=>$stats, 'id'=> $testId,'js'=>$js, 'css'=>$css));
+	}
+
+	public function myList(){
+		$s = $this->session->userdata('mpa_logged_in');
+		$list = $this->prova_model->getList($s['userId']);
+		loadLayout(array('list'=>$list));
+	}
+
+	public function view($testId){
+		$ret = $this->prova_model->getTest($testId);
+		if($ret == null)
+			show_404();
+		loadLayout(array('id'=>$testId,'test'=>$ret['test'], 'questions'=>$ret['questions']));
 	}
 
 	public function _check_disciplines($discipline){

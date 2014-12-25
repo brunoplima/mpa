@@ -84,7 +84,7 @@ Class Prova_model extends CI_Model
 				$data["question_$questionId"] = '';
 			$correctOption = $this->getCorrectOption($questionId);
 			if($correctOption !== NULL){
-				$fields['id_answer']  = $data["question_$questionId"];
+				$fields['id_answer']  = $data["question_$questionId"] != '' ? $data["question_$questionId"] : NULL;
 				$fields['is_correct'] = ($correctOption == $data["question_$questionId"]) ? 1 : 0;
 			}
 			else
@@ -123,6 +123,39 @@ Class Prova_model extends CI_Model
 				if($row->is_correct == '') $stats['subjetivas']++;
 		}
 		return $stats;
+	}
+
+	public function getList($userId){
+		$this->db->select("t.id, d.name AS discipline");
+		$this->db->select("DATE_FORMAT(t.date_add, '%d/%m/%Y %H:%i:%s') AS stored", false);
+		$this->db->from("mpa_test t, disciplines d");
+		$this->db->where("t.id_discipline", "d.id", false);
+		$this->db->where("t.id_aluno", $userId);
+		$this->db->order_by("t.id DESC");
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getTest($testId){
+		$this->db->select("DATE_FORMAT(t.date_add, '%d/%m/%Y %H:%i:%s') AS stored, d.name AS discipline", false);
+		$this->db->from('mpa_test t, disciplines d');
+		$this->db->where('t.id_discipline', 'd.id', false);
+		$this->db->where('t.id', $testId);
+		$query = $this->db->get();
+		if($query->num_rows() != 1)
+			return null;
+		$row = $query->result_array();
+		$test['stored']     = $row[0]['stored'];
+		$test['discipline'] = $row[0]['discipline'];
+
+		$this->db->select('enun.description enunciado, q.answer, o.text resposta, q.is_correct');
+		$this->db->from('mpa_question q');
+		$this->db->join('questions AS enun','enun.id=q.id_question');
+		$this->db->join('options AS o', 'o.id = q.id_answer', 'left');
+		$this->db->where('id_test', $testId);
+		$this->db->order_by('q.id');
+		$query = $this->db->get();
+		return array('test'=>$test, 'questions'=>$query->result_array());
 	}
 }
 

@@ -22,6 +22,7 @@
 		<?php if(isset($css)) foreach ($css as $file) echo link_tag("css/$file.css");?>
 		<?php echo script_tag('js/jquery-2.1.1.min.js');?>
 		<?php echo script_tag('js/bootstrap.min.js');?>
+		<?php echo script_tag('js/window_behaviour.js');?>
 		<?php echo script_tag('js/commom.js');?>
 		<?php echo script_tag('js/pace.min.js');?>
 		<?php echo script_tag('js/sweet-alert.min.js');?>
@@ -44,10 +45,10 @@
 			<div id='topmenu_content'>
 				<ul>
 					<li><?php echo anchor('aluno', '<span class="glyphicon glyphicon-home"></span>');?></li>
-					<li class='has-sub'><?php echo anchor('user', 'Prova');?>
+					<li class='has-sub'><a>Prova</a>
 						<ul>
-							<li><a><?php echo anchor('prova/gerar', 'Gerar');?></a></li>
-							<li><a>Corrigir</a></li>
+							<li><?php echo anchor('prova/gerar', 'Gerar');?></li>
+							<li><?php echo anchor('prova/lista', 'Minhas provas');?></li>
 						</ul>
 					</li>
 					<li class='has-sub'><a>Ranking de questões</a>
