@@ -4,21 +4,22 @@
 	<div id="prova_title"><b>Disciplina:</b> <i><?php echo $test['discipline'] ?></i></div>
 	<?php foreach ($questions as $key => $question): ?>
 		<?php
-			$classPanel = 'panel-default';
+			$classPanel = 'default';
 			$titlePanel = 'Questão subjetiva';
-			if($question['is_correct'] === '0') {$classPanel = 'panel-danger'; $titlePanel = 'Resposta incorreta';}
-			elseif($question['is_correct'] === '1') {$classPanel = 'panel-success'; $titlePanel = 'Resposta correta';}
+			if($question['is_correct'] === '0') {$classPanel = 'danger'; $titlePanel = 'Resposta incorreta';}
+			elseif($question['is_correct'] === '1') {$classPanel = 'success'; $titlePanel = 'Resposta correta';}
 		?>
-		<div class="panel <?php echo $classPanel?>" title="<?php echo $titlePanel?>">
+		<div class="panel panel-<?php echo $classPanel?>" title="<?php echo $titlePanel?>">
 			<div class="panel-heading">
-				<h3 class="panel-title"><?php echo $key+1 ?>) <?php echo $question['enunciado'] ?></h3>
+			<button type="button" value="<?php echo $question['id_question']?>" class="btn btn-<?php echo $classPanel?> pull-right other_resps" title="Respostas dos alunos"><span class="glyphicon glyphicon-comment"></span></button>
+				<h3 class="panel-title"><?php echo $key+1 ?>) <?php echo str_replace("\n","<br>",$question['enunciado']) ?></h3>
 			</div>
 			<div class="panel-body">
 				<?php
 					if(isset($question['resposta']))
 						echo $question['resposta'];
 					else
-						echo $question['answer'];
+						echo str_replace("\n", "<br>", $question['answer']);
 				?>
 			</div>
 		</div>

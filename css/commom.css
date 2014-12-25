@@ -3,6 +3,11 @@
 	font-style: italic;
 }
 
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+	background-color: rgba(217,237,247,0.75);
+}
+
 .table_result tbody tr td{
 	border: none;
 }
@@ -10,10 +15,6 @@
 	text-align: right;
 	font-style: italic;
 	color: gray;
-}
-
-.table_result tbody tr:hover td{
-	background-color: rgba(217,237,247,0.75);
 }
 
 .table_result .icon_actions{
@@ -44,4 +45,10 @@
 /*Specifics*/
 .table_result .icon_actions .icon_action_prova_get_statistics{
 	background-image: url('../images/icons/pie_chart_16.png');
+}
+
+.other_resps{
+	position: relative;
+	top: -8px;
+	right: -12px;
 }

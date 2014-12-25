@@ -1,5 +1,5 @@
 <h1>Minhas provas</h1><hr>
-<table class="table table_result">
+<table class="table table-hover table-condensed table-striped table_result">
 	<thead>
 		<tr><th>#</th><th>Data</th><th>Disciplina</th><th width="100px" class='icon_actions'>Ações</th></tr>
 	</thead>
@@ -25,9 +25,9 @@
 		<?php if(count($list) == 0): ?>
 			<tr><td colspan="4" align="center">Nenhum registro encontrado</td></tr>
 		<?php endif?>
-		<?php $found = count($list); $found .= $found == 1 ? ' registro' : ' registros';?>
-		<tfoot>
-			<tr><td colspan="4" align="right"><?php echo "<b>Total: </b>$found";?></td></tr>
-		</tfoot>
 	</tbody>
+	<?php $found = count($list); $found .= $found == 1 ? ' registro' : ' registros';?>
+	<tfoot>
+		<tr><td colspan="4" align="right"><?php echo "<b>Total: </b>$found";?></td></tr>
+	</tfoot>
 </table>

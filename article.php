@@ -25,6 +25,7 @@
 			<ul>
 				<li>Melhorar aleatoriedade na escolha de questões (prova_model.php : getQuestions);</li>
 				<li>Filtrar a dificuldade;</li>
+				<li>Reavaliar necessidade da coluna 'is_correct' na tabela 'mpa_question';</li>
 			</ul>
 	</body>
 </html>

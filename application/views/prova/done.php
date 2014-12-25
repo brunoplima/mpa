@@ -1,10 +1,11 @@
+<?php $gt = date('d/m/Y H:i:s'); ?>
 <?php if(isset($test)): ?>
 <?php if(isset($warnMessage)) echo "<div class='alert alert-warning'>$warnMessage</div>" ?>
 <?php echo form_open('prova/corrigir', array('id'=>'prova_form','role'=>"form", 'autocomplete'=>'off')); ?>
 	<div id="prova_title"><b>Disciplina:</b> <i><?php echo $discipline ?></i></div>
 	<hr>
 	<?php $cnt=0; foreach ($test['questions'] as $id => $description): $cnt++ ?>
-		<div class="question"><?php echo "$cnt) $description" ?></div>
+		<div class="question"><?php echo "$cnt) ".str_replace("\n","<br>",$description) ?></div>
 		<div class="answer">
 			<?php if(count($test['options'][$id]) > 0): ?>
 				<?php
@@ -27,10 +28,10 @@
 <?php if(isset($warnMessage)) echo "<br><div class='alert alert-warning'>$warnMessage</div>" ?>
 	<div id="submit_area">
 		<button type="button" class="btn btn-warning pull-left" id="redo">Gerar novamente <span class="glyphicon glyphicon-repeat"></span></button>
-		<button type="submit" class="btn btn-primary pull-right">Armazenar <span class="glyphicon glyphicon-cloud"></span></button>
+		<button type="submit" class="btn btn-primary pull-right">Corrigir e Armazenar <span class="glyphicon glyphicon-cloud"></span></button>
 		<button type="button" class="btn btn-default pull-right" id="save_pdf">PDF <span class="glyphicon glyphicon-save"></span></button>
 	</div>
-<?php $gt = date('d/m/Y H:i:s'); echo form_hidden('generateTime', $gt); ?>
+<?php echo form_hidden('generateTime', $gt); ?>
 <?php echo form_close(); ?>
 <?php endif ?>
 <div class="prova_timestamp">Prova gerada em <?php echo $gt?></div>

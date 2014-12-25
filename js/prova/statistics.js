@@ -2,14 +2,14 @@ function answeredChart(ans, notAns) {
 	var data = [
 		{
 				value: ans,
-				color: "#269abc",
-				highlight: "#39b3d7",
+				color: "#285e8e",
+				highlight: "#3276b1",
 				label: "Respondidas"
 		},
 		{
 				value: notAns,
-				color: "#ccc",
-				highlight:"#aaa",
+				color: "#eea236",
+				highlight:"#f0ad4e",
 				label: "Não respondidas"
 		}
 	];
@@ -23,14 +23,14 @@ function typeChart(obj, subj) {
 	var data = [
 		{
 				value: obj,
-				color: "#285e8e",
-				highlight: "#3276b1",
+				color: "#269abc",
+				highlight: "#39b3d7",
 				label: "Objetivas"
 		},
 		{
 				value: subj,
-				color: "#eea236",
-				highlight:"#f0ad4e",
+				color: "#ccc",
+				highlight:"#aaa",
 				label: "Subjetivas"
 		}
 	];

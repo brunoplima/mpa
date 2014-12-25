@@ -8,10 +8,11 @@ Class Prova_model extends CI_Model
 
 	public function getDisciplines(){
 		$this->db->select('id, name');
+		$this->db->order_by('name');
 		$query = $this->db->get('disciplines');
 		if($query->num_rows() > 0){
 			$q = $query->result_array();
-			$ret = array();
+			$ret = array(''=>'');
 			foreach ($q as $key => $value) {
 				$ret[$value['id']] = $value['name'];
 			}
@@ -28,6 +29,17 @@ Class Prova_model extends CI_Model
 			return NULL;
 		$ret = $query->result();
 		return $ret[0]->name;
+	}
+
+	public function getQuestion($questionId){
+		$this->db->select('q.description AS question, o.text AS answer');
+		$this->db->join('options o', 'q.id = o.question_id AND o.correct=1', 'left');
+		// $this->db->where('o.correct', '1');
+		$this->db->where('q.id',$questionId);
+		$query = $this->db->get('questions q');
+		if($query->num_rows > 0)
+			return $query->result_array()[0];
+		return NULL;
 	}
 
 	public function getQuestions($data){
@@ -149,7 +161,7 @@ Class Prova_model extends CI_Model
 		$test['stored']     = $row[0]['stored'];
 		$test['discipline'] = $row[0]['discipline'];
 
-		$this->db->select('enun.description enunciado, q.answer, o.text resposta, q.is_correct');
+		$this->db->select('q.id_question, enun.description enunciado, q.answer, o.text resposta, q.is_correct');
 		$this->db->from('mpa_question q');
 		$this->db->join('questions AS enun','enun.id=q.id_question');
 		$this->db->join('options AS o', 'o.id = q.id_answer', 'left');
@@ -157,6 +169,18 @@ Class Prova_model extends CI_Model
 		$this->db->order_by('q.id');
 		$query = $this->db->get();
 		return array('test'=>$test, 'questions'=>$query->result_array());
+	}
+
+	public function getAnswers($questionId){
+		$this->db->select("q.id, q.answer, q.id_answer,q.is_correct, o.text resposta, a.username as author, DATE_FORMAT(t.date_add, '%d/%m/%Y %H:%i:%s') AS stored", false);
+		$this->db->from('mpa_question q, aluno a, mpa_test t');
+		$this->db->join('options AS o', 'o.id = q.id_answer', 'left');
+		$this->db->where('a.id','t.id_aluno', false);
+		$this->db->where('t.id','q.id_test', false);
+		$this->db->where('q.id_question',$questionId);
+		$this->db->order_by('t.id DESC');
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 }
 

@@ -5,7 +5,7 @@
 			array('field' => 'password'				,'label' => 'Senha'										,'rules' => 'required|callback__check_user_pass'),
 		),
 		'userauth/signup' => array(
-			array('field' => 'username'				,'label' => 'Usuário'									,'rules' => 'required|callback__check_username_uniqueness_signup'),
+			array('field' => 'username'				,'label' => 'Usuário'									,'rules' => 'required|alpha_dash|callback__check_username_uniqueness_signup'),
 			array('field' => 'realName'				,'label' => 'Nome'										,'rules' => 'required'),
 			array('field' => 'college'				,'label' => 'IES'											,'rules' => 'callback__check_college_existence'),
 			array('field' => 'password'				,'label' => 'Senha'										,'rules' => 'required|min_length[4]'),
@@ -20,7 +20,7 @@
 			array('field' => 'generateTime'		,'label' => 'GT'											,'rules' => 'required'),
 		),
 		'user/settings' => array(
-			array('field' => 'username'				,'label' => 'Usuário'									,'rules' => 'required|callback__check_username_uniqueness'),
+			array('field' => 'username'				,'label' => 'Usuário'									,'rules' => 'required|alpha_dash|callback__check_username_uniqueness'),
 			array('field' => 'realName'				,'label' => 'Nome'										,'rules' => 'required'),
 			array('field' => 'oldPassword'		,'label' => 'Senha antiga'						,'rules' => 'callback__check_user_pass_change'),
 			array('field' => 'newPassword'		,'label' => 'Nova senha'							,'rules' => 'min_length[4]'),

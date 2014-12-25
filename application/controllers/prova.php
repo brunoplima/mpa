@@ -19,13 +19,17 @@ class Prova extends CI_Controller {
 		if($this->form_validation->run() !== FALSE){
 			$data = $this->input->post(NULL, TRUE);
 			$prova['questions'] = $this->prova_model->getQuestions($data);
-			if(count($prova['questions'] < $data['ammount']))
+			if(!$prova['questions']){
+				$this->session->set_flashdata('error', 'Nenhuma questão atende aos critérios. Por favor, tente novamente');
+				redirect('prova/gerar');
+			}
+			if(count($prova['questions']) < $data['ammount'])
 				$vars['warnMessage'] = "A quantidade de questões solicitadas é superior à existente no sistema";
 			$this->session->set_userdata('questions',array_keys($prova['questions']));
 			$this->session->set_userdata('discipline', $data['discipline']);
 			foreach (array_keys($prova['questions']) as $id)
 				$prova['options'][$id] = $this->prova_model->getOptions($id);
-			$vars['prova'] = $prova;
+			$vars['test'] = $prova;
 			$vars['discipline'] = $this->prova_model->getDiscipline($data['discipline']);
 			loadLayoutView($vars,"prova/done");
 		}
@@ -77,6 +81,15 @@ class Prova extends CI_Controller {
 		if($ret == null)
 			show_404();
 		loadLayout(array('id'=>$testId,'test'=>$ret['test'], 'questions'=>$ret['questions']));
+	}
+
+	public function answers($questionId){
+		$question = $this->prova_model->getQuestion($questionId);
+		if(!isset($question))
+			show_404();
+		$answers = $this->prova_model->getAnswers($questionId);
+		$s = $this->session->userdata('mpa_logged_in');
+		loadLayout(array('me'=>$s['username'],'answers'=>$answers, 'question'=>$question, 'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
 	}
 
 	public function _check_disciplines($discipline){

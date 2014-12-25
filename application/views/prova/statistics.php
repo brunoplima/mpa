@@ -4,17 +4,17 @@
 <hr>
 <div class="container">
 	<div class="column">
-		<div class="columnTitle"><br>Resolução</div>
+		<div class="columnTitle">Resolução</div>
 		<canvas id="answeredChart" width="200" height="200"></canvas>
 		<div id="answeredLegend"></div>
 	</div>
 	<div class="column">
-		<div class="columnTitle">Tipo&nbsp;de&nbsp;Questão<br><small>(Respondidas)</small></div>
+		<div class="columnTitle">Tipo&nbsp;de&nbsp;Questão</div>
 		<canvas id="typeChart" width="200" height="200"></canvas>
 		<div id="typeLegend"></div>
 	</div>
 	<div class="column">
-		<div class="columnTitle">Correção<br><small>(Objetivas)</small></div>
+		<div class="columnTitle">Correção&nbsp;<small>(Objetivas)</small></div>
 		<canvas id="accuraceChart" width="200" height="200"></canvas>
 		<div id="accuraceLegend"></div>
 	</div>

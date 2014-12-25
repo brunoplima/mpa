@@ -47,6 +47,7 @@ $route['prova/gerar']                                     = 'prova/generate';
 $route['prova/corrigir']                                  = 'prova/evaluateAndStore';
 $route['prova/visualizar/(:num)']                         = "prova/view/$1";
 $route['prova/estatisticas/(:num)']                       = "prova/statistics/$1";
+$route['prova/respostas/(:num)']                          = "prova/answers/$1";
 $route['prova/lista']                                     = "prova/myList";
 
 

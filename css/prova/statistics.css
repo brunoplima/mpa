@@ -21,8 +21,8 @@ h1{
 	float: right;
 }
 
-#answeredRow{border-right: solid 8px #269abc;}
-#notAnsweredRow{border-right: solid 8px #ccc;}
+#answeredRow{border-right: solid 8px #285e8e;}
+#notAnsweredRow{border-right: solid 8px #eea236;}
 #correctsRow{border-right: solid 8px #4cae4c;}
-#wrongRow{border-right: solid 8px #f00;}
-#subjetivasRow{border-right: solid 8px #eea236;}
+#wrongRow{border-right: solid 8px #d43f3a;}
+#subjetivasRow{border-right: solid 8px #ccc;}

@@ -1,0 +1,35 @@
+#tablePagination {
+	height: 25px;
+	text-align: right;
+	color: #434343;
+	margin-bottom: 20px;
+}
+
+#tablePagination_perPage{
+	float: left;
+}
+#tablePagination_currPage{
+	color: #434343;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+	border: solid 1px #838383;
+	text-align: center;
+}
+
+#tablePagination_firstPage, #tablePagination_lastPage, #tablePagination_prevPage , #tablePagination_nextPage{
+	margin-right: 5px;
+	border: solid 1px transparent;
+	position: relative;
+	padding: 2px;
+}
+#tablePagination_nextPage{
+	margin-left: 5px;
+}
+
+#tablePagination_firstPage:hover, #tablePagination_lastPage:hover, #tablePagination_prevPage:hover, #tablePagination_nextPage:hover{
+	cursor: pointer;
+	/*icon_hover*/
+	background-color:white;
+	border-right:1px solid #428BCA;
+	border-bottom:1px solid #428BCA;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+}
