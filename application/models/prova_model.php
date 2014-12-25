@@ -136,11 +136,12 @@ Class Prova_model extends CI_Model
 		return $query->result();
 	}
 
-	public function getTest($testId){
+	public function getTest($testId, $userId){
 		$this->db->select("DATE_FORMAT(t.date_add, '%d/%m/%Y %H:%i:%s') AS stored, d.name AS discipline", false);
 		$this->db->from('mpa_test t, disciplines d');
 		$this->db->where('t.id_discipline', 'd.id', false);
 		$this->db->where('t.id', $testId);
+		$this->db->where("t.id_aluno", $userId);
 		$query = $this->db->get();
 		if($query->num_rows() != 1)
 			return null;

@@ -72,7 +72,8 @@ class Prova extends CI_Controller {
 	}
 
 	public function view($testId){
-		$ret = $this->prova_model->getTest($testId);
+		$s = $this->session->userdata('mpa_logged_in');
+		$ret = $this->prova_model->getTest($testId, $s['userId']);
 		if($ret == null)
 			show_404();
 		loadLayout(array('id'=>$testId,'test'=>$ret['test'], 'questions'=>$ret['questions']));
