@@ -37,8 +37,10 @@ Class Prova_model extends CI_Model
 		// $this->db->where('o.correct', '1');
 		$this->db->where('q.id',$questionId);
 		$query = $this->db->get('questions q');
-		if($query->num_rows > 0)
-			return $query->result_array()[0];
+		if($query->num_rows > 0){
+			$ret = $query->result_array();
+			return $ret[0];
+		}
 		return NULL;
 	}
 
@@ -181,6 +183,49 @@ Class Prova_model extends CI_Model
 		$this->db->order_by('t.id DESC');
 		$query = $this->db->get();
 		return $query->result_array();
+	}
+
+	public function getMyLevel($userId, $questionId){
+		$this->db->select("level");
+		$this->db->where("id_aluno", $userId);
+		$this->db->where("id_question", $questionId);
+		$this->db->limit(1);
+		$query = $this->db->get('aluno_question_level');
+		if($query->num_rows() != 1)
+			return null;
+		$row = $query->result_array();
+		return $row[0]['level'];
+	}
+
+	public function getAvgLevel($questionId){
+		$this->db->select_avg("level","avg");
+		$this->db->where("id_question", $questionId);
+		$query = $this->db->get('aluno_question_level');
+		if($query->num_rows() != 1)
+			return null;
+		$row = $query->result_array();
+		return $row[0]['avg'];
+	}
+
+	public function setMyLevel($userId, $questionId, $level){
+		$this->db->select("level");
+		$this->db->where("id_aluno", $userId);
+		$this->db->where("id_question", $questionId);
+		$this->db->limit(1);
+		$search = $this->db->get('aluno_question_level');
+
+		$fields['level'] = $level;
+		if($search->num_rows() == 0){
+			$fields['id_aluno']    = $userId;
+			$fields['id_question'] = $questionId;
+			$query = $this->db->insert('aluno_question_level', $fields);
+		}
+		else{
+			$this->db->where('id_aluno',$userId);
+			$this->db->where('id_question',$questionId);
+			$query = $this->db->update('aluno_question_level', $fields);
+		}
+		return $this->db->affected_rows() > 0;
 	}
 }
 

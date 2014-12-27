@@ -52,6 +52,12 @@ $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'newpwd';
 $db['default']['database'] = 'minha_prova';
+
+// $db['default']['hostname'] = 'mysql.guiamaisce.com.br';
+// $db['default']['username'] = 'guiamaisce01';
+// $db['default']['password'] = 'brunobpl';
+// $db['default']['database'] = 'guiamaisce01';
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

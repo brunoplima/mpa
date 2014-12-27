@@ -31,3 +31,6 @@
 		<tr><td colspan="4" align="right"><?php echo "<b>Total: </b>$found";?></td></tr>
 	</tfoot>
 </table>
+<script type="text/javascript">
+	$(".table_result").tablePagination();
+</script>

@@ -10,10 +10,10 @@
 	$error[$cnt] = form_error('discipline'); 
 	$cnt++;
 
-	$label[$cnt] = form_label('Dificuldade*:', 'level', array('class'=>"col-sm-$labelWidth control-label")); 
-	$input[$cnt] = form_dropdown('level',$levels, set_value('level'), 'class="form-control"'); 
-	$error[$cnt] = form_error('level'); 
-	$cnt++;
+	// $label[$cnt] = form_label('Dificuldade*:', 'level', array('class'=>"col-sm-$labelWidth control-label")); 
+	// $input[$cnt] = form_dropdown('level',$levels, set_value('level'), 'class="form-control"'); 
+	// $error[$cnt] = form_error('level'); 
+	// $cnt++;
 
 	$label[$cnt] = form_label('Núm. Questões*:', 'ammount', array('class'=>"col-sm-$labelWidth control-label")); 
 	$input[$cnt] = form_input(array('name'=>'ammount','value'=>set_value('ammount'),'class'=>'form-control')); 

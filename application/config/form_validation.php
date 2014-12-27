@@ -13,7 +13,7 @@
 		),
 		'prova/generate' => array(
 			array('field' => 'discipline'			,'label' => 'Disciplina'							,'rules' => 'required|callback__check_disciplines'),
-			array('field' => 'level'					,'label' => 'Dificuldade'							,'rules' => 'required|callback__check_levels'),
+			// array('field' => 'level'					,'label' => 'Dificuldade'							,'rules' => 'required|callback__check_levels'),
 			array('field' => 'ammount'				,'label' => 'Número de questões'			,'rules' => 'required|is_natural_no_zero|less_than[100]'),
 		),
 		'prova/evaluateAndStore' => array(

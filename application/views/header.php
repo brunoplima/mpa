@@ -33,7 +33,7 @@
 		<div id="header">
 			<div id="appTitle">Minha Prova - Aluno</div>
 				<div id="user" class="dropdown pull-right">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php echo $this->session->userdata('mpa_logged_in')['name']; ?> <b class="caret"></b></a>
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php $s=$this->session->userdata('mpa_logged_in'); echo $s['name']; ?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="<?php echo site_url('user/settings')?>"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 						<li class="divider"></li>

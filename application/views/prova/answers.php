@@ -1,4 +1,11 @@
 <?php if(isset($answers)):?>
+<button type="button" class="btn btn-primary pull-right" id="evaluateButton">
+	<?php if(isset($avgLevel)): ?>
+	<span class="badge" title="Dificuldade da questão"><?php echo $avgLevel ?></span>
+	<?php else: ?>
+	<span class="glyphicon glyphicon-check" title="Dificuldade da questão"></span>
+	<?php endif ?>
+</button>
 <h3>Respostas dos Alunos</h3>
 <h4><b>Questão:</b> <i><?php echo str_replace("\n","<br>",$question['question'])?></i></h4>
 <?php if($question['answer'] != ''):?>
@@ -38,5 +45,48 @@
 </table>
 <script type="text/javascript">
 	$("#table_answers").tablePagination();
+	<?php $js  = 'id = "levels" class = "form-control" onchange="evaluateLevel()" title="Minha avaliação"'; ?>
+	var content = '<form><?php echo str_replace("\n","",form_dropdown("level",$levels, set_value("level", $myLevel), $js)) ?></form>';
+	$('#evaluateButton').popover({
+		title: "Dificuldade da questão",
+		content: content,
+		html: true,
+		placement: 'bottom',
+	});
+	function evaluateLevel(){
+		var value = $('#levels').val();
+		$('#evaluateButton').popover('destroy');
+
+		$.ajax({
+			type: "POST",
+			url: '<?php echo site_url("prova/setMyLevel/$id") ?>/' + value,
+			success: function(resp){
+				if(resp.code != 0) swal('Um erro foi encontrado', 'Não foi possível salvar sua opinião no momento.\nPor favor, tente mais tarde', 'error');
+				else{
+					swal({title: value,text: "Avaliação armazenada com sucesso",timer: 1000});
+					$.ajax({
+						type: "POST",
+						url: '<?php echo site_url("prova/getAvgLevel/$id") ?>',
+						success: function(resp){
+							if(resp.code == 0)
+								$('#evaluateButton').html('<span class="badge" title="Dificuldade da questão">' + resp.avg + '</span>');
+						},
+						dataType: 'json',
+						async: true
+					});
+				}
+			},
+			error: function(){swal('Um erro foi encontrado', 'Não foi possível salvar sua opinião no momento.\nPor favor, tente mais tarde', 'error');},
+			dataType: 'json'
+		});
+
+
+	};
 </script>
+<style type="text/css">
+	#avgLevel{
+		text-align: center;
+		margin-top: 15px;
+	}
+</style>
 <?php endif ?>

@@ -74,4 +74,4 @@ if ( ! function_exists('script_tag'))
     }
 }
 
-?> 
+?>

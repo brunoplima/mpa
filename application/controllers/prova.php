@@ -35,7 +35,7 @@ class Prova extends CI_Controller {
 		}
 		else{
 			$vars['disciplines'] = $this->prova_model->getDisciplines();
-			$vars['levels']      = array(''=>'', 1=>"1 (Muito fácil)", 2=>2, 3=>3, 4=>4, 5=>"5 (Muito Difícil)",12=>12);
+			// $vars['levels']      = array(''=>'', 1=>"1 (Muito fácil)", 2=>2, 3=>3, 4=>4, 5=>"5 (Muito Difícil)");
 			loadLayout($vars);
 		}
 	}
@@ -72,7 +72,7 @@ class Prova extends CI_Controller {
 	public function myList(){
 		$s = $this->session->userdata('mpa_logged_in');
 		$list = $this->prova_model->getList($s['userId']);
-		loadLayout(array('list'=>$list));
+		loadLayout(array('list'=>$list, 'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
 	}
 
 	public function view($testId){
@@ -87,9 +87,28 @@ class Prova extends CI_Controller {
 		$question = $this->prova_model->getQuestion($questionId);
 		if(!isset($question))
 			show_404();
-		$answers = $this->prova_model->getAnswers($questionId);
 		$s = $this->session->userdata('mpa_logged_in');
-		loadLayout(array('me'=>$s['username'],'answers'=>$answers, 'question'=>$question, 'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
+		$answers = $this->prova_model->getAnswers($questionId);
+		$myLevel = $this->prova_model->getMyLevel($s['userId'],$questionId);
+		$avgLevel = $this->prova_model->getAvgLevel($questionId);
+		if($avgLevel)$avgLevel = number_format($avgLevel, 2);
+		$levels  = array(''=>'', 1=>"•", 2=>"••", 3=>"•••", 4=>"••••", 5=>"•••••");
+		loadLayout(array('id'=>$questionId,'me'=>$s['username'],'answers'=>$answers, 'question'=>$question, 'levels'=>$levels, 'myLevel'=>$myLevel, 'avgLevel'=>$avgLevel,'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
+	}
+
+	public function setMyLevel($questionId, $level){
+		$s = $this->session->userdata('mpa_logged_in');
+		if($this->prova_model->setMyLevel($s['userId'],$questionId, $level))
+			echo json_encode(array('code'=>0, 'msg'=>'OK'));
+		else
+			echo json_encode(array('code'=>1, 'msg'=>'Error'));
+	}
+
+	public function getAvgLevel($questionId){
+		$avgLevel = $this->prova_model->getAvgLevel($questionId);
+		if($avgLevel)$avgLevel = number_format($avgLevel, 2);
+		else $avgLevel = '-';
+		echo json_encode(array('code'=>0, 'avg'=>$avgLevel));
 	}
 
 	public function _check_disciplines($discipline){

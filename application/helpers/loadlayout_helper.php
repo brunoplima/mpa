@@ -2,7 +2,8 @@
 
 if ( ! function_exists('loadLayout')){
 	function loadLayout($vars = array()) {
-		$callers = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+		// $callers = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+		$callers = debug_backtrace(false);
 		$dir  = strtolower($callers[1]['class']);
 		$view = strtolower($callers[1]['function']);
 		$CI =& get_instance();
