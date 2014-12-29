@@ -42,7 +42,7 @@
 </div>
 <hr>
 <div class="prova_timestamp pull-left">Prova corrigida em <?php echo $stats['time']?></div>
-<div class="pull-right">
+<div class="pull-right" style="margin-bottom: 20px">
 	<!-- <button type="button" class="btn btn-default" id="redo">Gerar nova prova <span class="glyphicon glyphicon-file"></span></button> -->
 	<button type="button" class="btn btn-default" id="list">Minhas provas <span class="glyphicon glyphicon-list"></span></button>
 	<button type="button" class="btn btn-primary" id="view">Ver respostas <span class="glyphicon glyphicon-eye-open"></span></button>

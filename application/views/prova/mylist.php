@@ -1,4 +1,3 @@
-<h1>Minhas provas</h1><hr>
 <table class="table table-hover table-condensed table-striped table_result">
 	<thead>
 		<tr><th>#</th><th>Data</th><th>Disciplina</th><th width="100px" class='icon_actions'>Ações</th></tr>

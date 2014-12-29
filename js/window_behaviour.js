@@ -1,4 +1,11 @@
 $(function(){
+	doResize();
+	var resizeTimer = null;
+	$(window).bind('resize', function() {
+		if (resizeTimer) clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(doResize, 100);
+	});
+
 
 	$(".table_result .icon_actions").find("[class$=_delete]").attr('title', 'Excluir').addClass('icon_action_delete');
 	$(".table_result .icon_actions").find("[class$=_view]").attr('title', 'Visualizar').addClass('icon_action_view');
@@ -28,6 +35,10 @@ $(function(){
 	});
 
 });
+
+function doResize() {
+	$("#pageBody").css("height", window.innerHeight - 65);
+};
 
 function getBaseURL(){
 	var wl = String(window.location.pathname);

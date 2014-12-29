@@ -31,9 +31,11 @@ class Prova extends CI_Controller {
 				$prova['options'][$id] = $this->prova_model->getOptions($id);
 			$vars['test'] = $prova;
 			$vars['discipline'] = $this->prova_model->getDiscipline($data['discipline']);
+			$vars['highlight']  = 'prova';
 			loadLayoutView($vars,"prova/done");
 		}
 		else{
+			$vars['pageTitle']   = 'Gerar Prova';
 			$vars['disciplines'] = $this->prova_model->getDisciplines();
 			// $vars['levels']      = array(''=>'', 1=>"1 (Muito fácil)", 2=>2, 3=>3, 4=>4, 5=>"5 (Muito Difícil)");
 			loadLayout($vars);
@@ -72,7 +74,8 @@ class Prova extends CI_Controller {
 	public function myList(){
 		$s = $this->session->userdata('mpa_logged_in');
 		$list = $this->prova_model->getList($s['userId']);
-		loadLayout(array('list'=>$list, 'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
+		$vars['pageTitle']   = 'Gerar Prova';
+		loadLayout(array('pageTitle'=>'Minhas Provas','list'=>$list, 'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
 	}
 
 	public function view($testId){
@@ -93,7 +96,7 @@ class Prova extends CI_Controller {
 		$avgLevel = $this->prova_model->getAvgLevel($questionId);
 		if($avgLevel)$avgLevel = number_format($avgLevel, 2);
 		$levels  = array(''=>'', 1=>"•", 2=>"••", 3=>"•••", 4=>"••••", 5=>"•••••");
-		loadLayout(array('id'=>$questionId,'me'=>$s['username'],'answers'=>$answers, 'question'=>$question, 'levels'=>$levels, 'myLevel'=>$myLevel, 'avgLevel'=>$avgLevel,'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
+		loadLayout(array('pageTitle'=>'Respostas dos alunos','id'=>$questionId,'me'=>$s['username'],'answers'=>$answers, 'question'=>$question, 'levels'=>$levels, 'myLevel'=>$myLevel, 'avgLevel'=>$avgLevel,'js'=>array('jquery.tablePagination.0.5.min'), 'css'=>array('tablePagination')));
 	}
 
 	public function setMyLevel($questionId, $level){

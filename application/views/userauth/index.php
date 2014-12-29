@@ -1,30 +1,4 @@
-<?php echo doctype('html5') ?>
-<html lang="pt">
-	<head>
-		<meta charset="utf-8">
-		<?php
-		$meta = array(
-			array('name' => 'robots', 'content' => 'no-cache'),
-			array('name' => 'application-name', 'content' => 'Minha Prova - Aluno'),
-			array('name' => 'description', 'content' => 'Minha Prova - Aluno'),
-			array('name' => 'author', 'content' => 'Bruno Lima'),
-		);
-		echo meta($meta);
-		?>
-		<title>Minha Prova - Aluno</title>
-		<link rel="shortcut icon" href="http://localhost/mpa/favicon.ico?v=2" />
-		<?php echo link_tag('css/bootstrap.min.css');?>
-		<?php echo link_tag('css/header.css');?>
-		<?php echo link_tag('css/userAuth/index.css');?>
-		<?php echo script_tag('js/jquery-2.1.1.min.js');?>
-		<?php echo script_tag('js/bootstrap.min.js');?>
-		<?php echo script_tag('js/portuguese.js');?>
-		<script>$(document).ready(function(){$( "#username" ).focus();});</script>
-	</head>
-	<body>
-		<div id="header"><div id="appTitle">Minha Prova - Aluno</div></div>
-		<div id="topmenu"><div id='topmenu_content'></div></div>
-		<div id="loginBox">
+		<div id="loginBox" class="ui-corner-all">
 			<div id="loginTitle"><!-- Minha Prova - Aluno --></div>
 			<div id="loginLogo"></div>
 			<?php $type  = array('username'=> 'text',    'password'=>'password');?>
@@ -39,7 +13,3 @@
 				<?php endforeach; ?>
 				<a href="<?php echo site_url('userauth/signup')?>">Cadastrar-se</a><button type="submit" class="btn btn-primary btn-stretch-sides pull-right">Entrar</button>
 			</form>
-		</div>
-		<div id="footer">Desenvolvido por <?php echo mailto('brunolima.uece@gmail.com', 'Bruno Lima')?> &middot; UECE &middot; 2014</div>
-	</body>
-</html>

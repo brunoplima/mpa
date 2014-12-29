@@ -13,7 +13,7 @@ class Aluno extends CI_Controller {
 	}
 
 	public function index(){
-		loadLayout(array('css'=>array('aluno/aluno.css')));
+		loadLayout(array('pageTitle'=>'Página Inicial','css'=>array('aluno/aluno')));
 	}
 
 }

@@ -1,0 +1,43 @@
+#header{
+	padding-top: 20px;
+	height: 80px;
+}
+
+#sigupBox, #loginBox{
+	padding-bottom: 30px;
+	margin: auto;
+	margin-top: 30px;
+	background: white;
+	-webkit-box-shadow: 0px 0px 7px 4px #666;
+	-moz-box-shadow: 0px 0px 7px 4px #666;
+	box-shadow: 0px 0px 7px 4px #666;
+	width: 350px;
+}
+
+#loginBox{
+	padding-top: 30px;
+}
+
+#loginLogo{
+	width: 209px;
+	height: 150px;
+	margin: 0px auto 0px ;
+	background:url(../../images/logo_209x150.png) center no-repeat;
+}
+
+#loginForm{
+	width: 80%;
+	margin: auto;
+	margin-top: 40px;
+}
+
+#sigupBox{
+	padding-top: 10px;
+}
+#sigupBox h1{
+	text-align: center;
+}
+#sigupBox form{
+	width: 80%;
+	margin: auto;
+}

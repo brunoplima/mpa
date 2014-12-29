@@ -1,1 +1,1 @@
-Início1
+<div id="homepageBody"></div>

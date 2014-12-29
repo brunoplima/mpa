@@ -10,14 +10,13 @@
 			array('name' => 'author', 'content' => 'Bruno Lima'),
 		);
 		echo meta($meta);
-		$pageTitle = isset($title) ? $title : 'Minha Prova - Aluno';
 		?>
-		<title><?php echo $pageTitle ?></title>
+		<title>Minha Prova - Aluno</title>
 		<link rel="shortcut icon" href="http://localhost/mpa/favicon.ico?v=2" />
 		<?php echo link_tag('css/bootstrap.min.css');?>
 		<?php echo link_tag('css/header.css');?>
 		<?php echo link_tag('css/commom.css');?>
-		<?php echo link_tag('css/pace-flash-blue.css');?>
+		<?php echo link_tag('css/pace-flash-white.css');?>
 		<?php echo link_tag('css/sweet-alert.css');?>
 		<?php if(isset($css)) foreach ($css as $file) echo link_tag("css/$file.css");?>
 		<?php echo script_tag('js/jquery-2.1.1.min.js');?>
@@ -27,47 +26,40 @@
 		<?php echo script_tag('js/pace.min.js');?>
 		<?php echo script_tag('js/sweet-alert.min.js');?>
 		<?php if(isset($js))  foreach ($js as $file)  echo script_tag("js/$file.js"); ?>
-		<script>$(document).ready(function(){$( "#username" ).focus();});</script>
+		<?php if(isset($highlight)):?>
+		<script>$(document).ready(function(){$( '#<?php echo "menu_$highlight" ?>' ).addClass('active');});</script>
+		<?php endif ?>
+
 	</head>
 	<body>
-		<div id="header">
-			<div id="appTitle">Minha Prova - Aluno</div>
-				<div id="user" class="dropdown pull-right">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php $s=$this->session->userdata('mpa_logged_in'); echo $s['name']; ?> <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="<?php echo site_url('user/settings')?>"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-						<li class="divider"></li>
-						<li><a href="<?php echo site_url('userauth/logout')?>" style="color: red"><span class="glyphicon glyphicon-remove"></span> Sair</a></li>
-					</ul>
-				</div>
-		</div>
-		<div id="topmenu">
-			<div id='topmenu_content'>
-				<ul>
-					<li><?php echo anchor('aluno', '<span class="glyphicon glyphicon-home"></span>');?></li>
-					<li class='has-sub'><a>Prova</a>
-						<ul>
+		<div id="pageHeader">
+			<div id="headerContent">
+				<div id="appTitle"><?php echo anchor(site_url(), 'Minha Prova - <small>Aluno</small>');?></div>
+				<ul class="nav nav-pills" id="topmenu">
+					<li role="presentation" id="menu_aluno"><?php echo anchor(site_url(), 'Início');?></li>
+					<li role="presentation" class="dropdown" id="menu_prova">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+							Prova <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
 							<li><?php echo anchor('prova/gerar', 'Gerar');?></li>
 							<li><?php echo anchor('prova/lista', 'Minhas provas');?></li>
 						</ul>
 					</li>
-					<li class='has-sub'><a>Ranking de questões</a>
-						<ul>
-							<li><a>Direto</a></li>
-							<li><a>Baseado Respostas</a></li>
+					<li role="presentation" class="dropdown pull-right" id="menu_prova">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+							<?php $s=$this->session->userdata('mpa_logged_in'); echo $s['name']; ?> <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><?php echo anchor('user/settings', '<span class="glyphicon glyphicon-cog"></span> Configurações');?></li>
+							<li><?php echo anchor('userauth/logout', '<span class="glyphicon glyphicon-remove" style="color: red"></span> Sair');?></li>
 						</ul>
 					</li>
-					<li class='has-sub'><a>Minhas respostas</a>
-						<ul>
-							<li><a>Ver</a></li>
-							<li><a>Compartilhar</a></li>
-						</ul>
-					</li>
-					<li><a>Ranking de alunos</a></li>
 				</ul>
 			</div>
 		</div>
-		<div id="layoutContent">
-			<div id="tableWrapper">
-				<div id="tableRow">
-					<div id="tableContent">
+		<div id="pageBody" class="ui-corner-bottom">
+			<?php if(isset($pageTitle)): ?>
+			<div id="pageTitle"><?php echo $pageTitle?></div>
+			<?php endif ?>
+			<div id="bodyContent" class="ui-corner-all">

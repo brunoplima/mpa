@@ -15,6 +15,7 @@ class UserAuth extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="help-block">', '</div>');
 		if ($this->form_validation->run() == FALSE){
+			$this->load->view("userauth/header");
 			$this->load->view("userauth/index");
 			$this->load->view("footer");
 		}
@@ -54,7 +55,15 @@ class UserAuth extends CI_Controller {
 				$this->load->model('userauth_model');
 				$this->userauth_model->createUser($data);
 				$this->session->set_flashdata('success', 'Cadastro realizado com sucesso');
-				redirect('userauth');
+
+				$data = $this->userauth_model->getData($this->input->post('username'));
+				$sess_array = array(
+					'username' => $this->input->post('username'),
+					'name'     => $data['name'],
+					'userId'   => $data['id'],
+				);
+				$this->session->set_userdata('mpa_logged_in', $sess_array);
+				redirect('aluno');
 			}
 			catch(Exception $e){
 				$this->session->set_flashdata('error', "Não foi possível salvar. Houve um erro. Erro: {$e->getMessage()}");
@@ -63,7 +72,8 @@ class UserAuth extends CI_Controller {
 		}
 		$this->load->model('commom_model');
 		$colleges = $this->commom_model->getColleges();
-		$this->load->view("userauth/signup", array('colleges'=>$colleges));
+		$this->load->view("userauth/header", array('colleges'=>$colleges));
+		$this->load->view("userauth/signup");
 		$this->load->view("footer");
 	}
 

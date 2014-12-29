@@ -7,10 +7,10 @@ if ( ! function_exists('loadLayout')){
 		$dir  = strtolower($callers[1]['class']);
 		$view = strtolower($callers[1]['function']);
 		$CI =& get_instance();
+		$vars['highlight'] = $dir;
 		$CI->load->view("header", $vars);
 		$CI->load->view("flash");
 		$CI->load->view("$dir/$view");
-		$CI->load->view("affix");
 		$CI->load->view("footer");
 	}
 }
@@ -21,7 +21,6 @@ if ( ! function_exists('loadLayoutView')){
 		$CI->load->view("header", $vars);
 		$CI->load->view("flash");
 		$CI->load->view($view);
-		$CI->load->view("affix");
 		$CI->load->view("footer");
 	}
 }

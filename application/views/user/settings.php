@@ -1,6 +1,5 @@
 <?php
-	echo form_fieldset("Configurações"); 
-	echo form_open('user/settings', array('class'=>"form-horizontal", 'role'=>"form", 'autocomplete'=>'off')); 
+	echo form_open('user/settings', array('class'=>"form-horizontal mpa_form", 'role'=>"form", 'autocomplete'=>'off')); 
 	$cnt = 0;
 	$labelWidth = 2;
 	$inputWidth = 4;
@@ -72,5 +71,4 @@
 	})
 	</script>
 <?php
-	echo form_fieldset_close();
 	echo form_close();

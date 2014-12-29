@@ -52,7 +52,7 @@ class User extends CI_Controller {
 			}
 			redirect('aluno');
 		}
-		loadLayout(array('realName'=>$realName, 'username'=>$username, 'college'=>$this->user_model->getCollege($s['userId'])));
+		loadLayout(array('pageTitle'=>'Configurações','realName'=>$realName, 'username'=>$username, 'college'=>$this->user_model->getCollege($s['userId'])));
 	}
 
 	public function _check_user_pass_change($password){

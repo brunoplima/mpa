@@ -6,7 +6,6 @@
 	<span class="glyphicon glyphicon-check" title="Dificuldade da questão"></span>
 	<?php endif ?>
 </button>
-<h3>Respostas dos Alunos</h3>
 <h4><b>Questão:</b> <i><?php echo str_replace("\n","<br>",$question['question'])?></i></h4>
 <?php if($question['answer'] != ''):?>
 <h5><b>Resposta:</b> <i><?php echo $question['answer']?></i></h5>
