@@ -46,7 +46,16 @@
 							<li><?php echo anchor('prova/lista', 'Minhas provas');?></li>
 						</ul>
 					</li>
-					<li role="presentation" class="dropdown pull-right" id="menu_prova">
+					<li role="presentation" class="dropdown" id="menu_ranking">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+							Ranking <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><?php echo anchor('ranking/questoes', 'Questões');?></li>
+							<li><?php echo anchor('ranking/alunos', 'Alunos');?></li>
+						</ul>
+					</li>
+					<li role="presentation" class="dropdown pull-right">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 							<?php $s=$this->session->userdata('mpa_logged_in'); echo $s['name']; ?> <span class="caret"></span>
 						</a>

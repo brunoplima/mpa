@@ -13,6 +13,10 @@ class Prova extends CI_Controller {
 		$this->load->model('prova_model');
 	}
 
+	public function index(){
+		redirect(site_url());
+	}
+
 	public function generate(){
 		$vars = array();
 		$this->form_validation->set_error_delimiters('<div class="help-block">', '</div>');

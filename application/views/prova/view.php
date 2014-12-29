@@ -11,7 +11,7 @@
 		?>
 		<div class="panel panel-<?php echo $classPanel?>" title="<?php echo $titlePanel?>">
 			<div class="panel-heading">
-			<button type="button" value="<?php echo $question['id_question']?>" class="btn btn-<?php echo $classPanel?> pull-right other_resps" title="Respostas dos alunos"><span class="glyphicon glyphicon-comment"></span></button>
+			<button type="button" value="<?php echo $question['id_question']?>" class="btn btn-<?php echo $classPanel?> pull-right other_resps other_resps_relative" title="Respostas dos alunos"><span class="glyphicon glyphicon-comment"></span></button>
 				<h3 class="panel-title"><?php echo $key+1 ?>) <?php echo str_replace("\n","<br>",$question['enunciado']) ?></h3>
 			</div>
 			<div class="panel-body">

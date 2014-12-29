@@ -1,5 +1,6 @@
 body{
 	background: url('../images/bg-noise-20x20.png') #CCF;
+	min-width: 700px;
 }
 
 #homepageBody{

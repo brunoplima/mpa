@@ -47,7 +47,7 @@
 	background-image: url('../images/icons/pie_chart_16.png');
 }
 
-.other_resps{
+.other_resps_relative{
 	position: relative;
 	top: -8px;
 	right: -12px;
@@ -55,4 +55,8 @@
 
 .mpa_form{
 	width: 90%
+}
+
+a.list-group-item:hover, a.list-group-item:focus {
+	background-color: rgba(217,237,247,0.75);
 }

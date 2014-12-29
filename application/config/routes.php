@@ -50,6 +50,11 @@ $route['prova/estatisticas/(:num)']                       = "prova/statistics/$1
 $route['prova/respostas/(:num)']                          = "prova/answers/$1";
 $route['prova/lista']                                     = "prova/myList";
 
+# Ranking
+$route['ranking/questoes']                                = "ranking/questions_index";
+$route['ranking/questoes/(:any)']                         = "ranking/questions/$1";
+$route['ranking/alunos']                                  = "ranking/students_index";
+$route['ranking/alunos/(:any)']                           = "ranking/students/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
